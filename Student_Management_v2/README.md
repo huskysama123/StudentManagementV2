@@ -95,7 +95,6 @@ text
 ---
 
 ## 📁 Project Structure
-## 📁 Project Structure
 ```bash
 StudentManagement/
 ├── src/
@@ -145,6 +144,7 @@ StudentManagement/
    - Create `bin` folder for compiled files
 
 4. **Ensure your folder structure looks like:**
+```
 📁 StudentManagement
 ├── 📁 src
 │ ├── 📁 model
@@ -155,7 +155,7 @@ StudentManagement/
 │ └── 📁 main
 ├── 📁 bin (auto-generated)
 └── 📁 lib (if needed)
-
+```
 
 ---
 
