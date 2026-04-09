@@ -96,33 +96,26 @@ text
 
 ## 📁 Project Structure
 StudentManagement/
-│
 ├── src/
-│ ├── model/
-│ │ └── Student.java # Student entity
-│ │
-│ ├── data/
-│ │ ├── IStudentRepository.java # Repository interface
-│ │ └── StudentFileRepository.java # File-based repository
-│ │
-│ ├── business/
-│ │ ├── IStudentService.java # Service interface
-│ │ └── StudentService.java # Business logic
-│ │
-│ ├── ui/
-│ │ └── StudentUI.java # Console UI
-│ │
-│ ├── utils/
-│ │ ├── FileHandler.java # File operations
-│ │ └── ValidationUtils.java # Input validation
-│ │
-│ └── main/
-│ └── App.java # Entry point
-│
-├── bin/ # Compiled output (auto-generated)
-├── lib/ # Dependencies (if any)
-├── students.dat # Data file (auto-generated)
-└── README.md
+│   ├── model/
+│   │   └── Student.java             # Student entity class
+│   ├── data/
+│   │   ├── IStudentRepository.java  # Repository interface
+│   │   └── StudentFileRepository.java # File-based implementation of Repository
+│   ├── business/
+│   │   ├── IStudentService.java     # Service interface
+│   │   └── StudentService.java      # Business logic implementation
+│   ├── ui/
+│   │   └── StudentUI.java           # Console-based User Interface
+│   ├── utils/
+│   │   ├── FileHandler.java         # Utilities for file I/O operations
+│   │   └── ValidationUtils.java     # Input validation logic
+│   └── main/
+│       └── App.java                 # Main entry point of the application
+├── bin/                             # Compiled .class files (auto-generated)
+├── lib/                             # External dependencies/libraries (if any)
+├── students.dat                     # Data storage file (auto-generated)
+└── README.md                        # Project documentation
 
 text
 
@@ -162,7 +155,6 @@ text
 ├── 📁 bin (auto-generated)
 └── 📁 lib (if needed)
 
-text
 
 ---
 
