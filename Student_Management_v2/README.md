@@ -95,29 +95,30 @@ text
 ---
 
 ## 📁 Project Structure
+## 📁 Project Structure
+```bash
 StudentManagement/
 ├── src/
 │   ├── model/
 │   │   └── Student.java             # Student entity class
 │   ├── data/
 │   │   ├── IStudentRepository.java  # Repository interface
-│   │   └── StudentFileRepository.java # File-based implementation of Repository
+│   │   └── StudentFileRepository.java # File-based implementation
 │   ├── business/
 │   │   ├── IStudentService.java     # Service interface
-│   │   └── StudentService.java      # Business logic implementation
+│   │   └── StudentService.java      # Business logic
 │   ├── ui/
-│   │   └── StudentUI.java           # Console-based User Interface
+│   │   └── StudentUI.java           # Console UI
 │   ├── utils/
-│   │   ├── FileHandler.java         # Utilities for file I/O operations
-│   │   └── ValidationUtils.java     # Input validation logic
+│   │   ├── FileHandler.java
+│   │   └── ValidationUtils.java
 │   └── main/
-│       └── App.java                 # Main entry point of the application
-├── bin/                             # Compiled .class files (auto-generated)
-├── lib/                             # External dependencies/libraries (if any)
-├── students.dat                     # Data storage file (auto-generated)
-└── README.md                        # Project documentation
-
-text
+│       └── App.java
+├── bin/
+├── lib/
+├── students.dat
+└── README.md
+```
 
 > **Note:** The `bin` folder contains compiled `.class` files. The `src` folder maintains all source code.
 
