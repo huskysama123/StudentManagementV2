@@ -95,7 +95,6 @@ text
 ---
 
 ## 📁 Project Structure
-## 📁 Project Structure
 ```bash
 StudentManagement/
 ├── src/
