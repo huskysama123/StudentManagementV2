@@ -13,17 +13,18 @@ import student_mana.model.Student;
 
 public class FileHandler {
     private String fileName = "students.txt";
+
     public FileHandler() {
     }
 
     // Write data to file
     public void saveToFile(List<Student> studentList) {
-        File file = new File(fileName);
-        File parentDir = file.getParentFile();
-        // Check if the parent folder(utils) does not have, then create new file
-        if (parentDir != null && !parentDir.exists()) {
-            parentDir.mkdirs();
-        }
+        // File file = new File(fileName);
+        // File parentDir = file.getParentFile();
+        // // Check if the parent folder(utils) does not have, then create new file
+        // if (parentDir != null && !parentDir.exists()) {
+        //     parentDir.mkdirs();
+        // }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Student s : studentList) {
@@ -36,7 +37,7 @@ public class FileHandler {
                 bw.newLine();
                 // bw.close();
             }
-            System.out.println("File is saved in " + fileName + " sucessfull!");
+            // System.out.println("File is saved in " + fileName + " sucessfull!");
         } catch (IOException e) {
             System.out.println("Error while saving file: " + e.getMessage());
         }
@@ -63,5 +64,24 @@ public class FileHandler {
         }
         return sData;
     }
+
     // Export to csv file
+    public void exportToCSV(List<Student> studetnlist, String filename) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+            bw.write("ID,Name,Age,Email,GPA\n");
+            for (Student s : studetnlist) {
+                String line = s.getStudentID() + "," +
+                        s.getAge() + "," +
+                        s.getAddress() + "," +
+                        s.getEmail() + "," +
+                        s.getGpa();
+                bw.write(line);
+                bw.newLine();
+                saveToFile(studetnlist);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error while saving file: " + e.getMessage());
+        }
+    }
 }
