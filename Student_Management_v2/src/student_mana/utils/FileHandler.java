@@ -29,6 +29,7 @@ public class FileHandler {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (Student s : studentList) {
                 String line = s.getStudentID() + "|" +
+                        s.getName() + "|" + 
                         s.getAge() + "|" +
                         s.getAddress() + "|" +
                         s.getEmail() + "|" +

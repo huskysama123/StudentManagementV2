@@ -3,11 +3,12 @@ package student_mana.business;
 import java.util.List;
 
 import student_mana.data.IStudentREpository;
+import student_mana.data.StudentFileRepository;
 import student_mana.model.Student;
 import student_mana.utils.ValidationUtils;
 
 public class StudentService implements IStudentService {
-    private IStudentREpository respository;
+    private IStudentREpository respository = new StudentFileRepository();
 
     @Override
     public void addStudent(Student s) {

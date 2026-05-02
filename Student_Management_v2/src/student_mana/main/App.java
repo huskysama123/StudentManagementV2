@@ -17,5 +17,6 @@ public class App {
         Student s3 = new Student(null, "king husky 3",
                 20, "can tho", "kighusky123@gmail.com", 4.0);
         ui.startMenu();
+        
     }
 }
