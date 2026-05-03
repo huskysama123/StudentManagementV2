@@ -12,18 +12,18 @@ public class StudentService implements IStudentService {
 
     @Override
     public void addStudent(Student s) {
-        // Check duplicated email
-        for (Student student : respository.findAll()) {
-            if (student.getEmail().equals(s.getEmail())) {
-                System.out.println("Duplicated Email!");
-                return;
-            }
-        }
         s.setStudentID(generateID());
         respository.save(s);
     }
 
-    private boolean isDuplicateEmail(String email) {
+    public boolean isDuplicateEmail(String email) {
+        // Check duplicated email
+        for (Student student : respository.findAll()) {
+            if (student.getEmail().equals(email)) {
+                // System.out.println("Duplicated Email!");
+                return true;
+            }
+        }
         return false;
     }
 

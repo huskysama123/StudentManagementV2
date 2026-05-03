@@ -2,6 +2,7 @@ package student_mana.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class StudentFileRepository implements IStudentREpository {
     private Map<String, Student> studentsMap;
 
     public StudentFileRepository() {
-        this.studentsMap = new HashMap<>();
+        this.studentsMap = new LinkedHashMap<>();
         this.filehander = new FileHandler();
         loadDataFromFile();
     }

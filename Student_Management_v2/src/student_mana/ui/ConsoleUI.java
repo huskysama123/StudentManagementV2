@@ -14,7 +14,7 @@ public class ConsoleUI {
     private int choice;
     private IStudentService service = new StudentService();
     private StudentFileRepository stFile;
-    private ValidationUtils validCheck;
+    private ValidationUtils validCheck = new ValidationUtils();
     private Scanner ip = new Scanner(System.in);
 
     private boolean isValid;
@@ -27,6 +27,7 @@ public class ConsoleUI {
         boolean isKeepUsing = true;
         while (isKeepUsing) {
             printMenu();
+            System.out.print("Please choose (1,2,3,4,5 or 0: ");
             choice = Integer.parseInt(ip.nextLine().trim());
             switch (choice) {
                 case 1:
@@ -68,11 +69,20 @@ public class ConsoleUI {
     // Input information of student
     public void inputInformation() {
         String name = intputString("Enter your name: ",
-    "Name must contain letters only!",
-        validCheck::isValidName);
+                "Name must contain letters only!",
+                validCheck::isValidName);
         int age = inputInt("Enter your age: ");
-        String address = intputString("Enter your address: ","",s->true);
-        String email = intputString("Enter your email: ","Invalid email format!", validCheck::isValidEmail);
+        String address = intputString("Enter your address: ", "", s -> true);
+        String email = "";
+        isValid = true;
+        while (isValid) {
+            email = intputString("Enter your email: ", "Invalid email format!", validCheck::isValidEmail);
+            if (service.isDuplicateEmail(email)) {
+                System.out.println("Duplicated Email! Please enter another email.");
+            } else {
+                isValid = false;
+            }
+        }
         double gpa = inputDouble("Enter your GPA: ");
         Student s = new Student(null, name, age, address, email, gpa);
         service.addStudent(s);

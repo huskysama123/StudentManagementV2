@@ -7,6 +7,8 @@ import student_mana.model.Student;
 public interface IStudentService {
     public void addStudent(Student s);
 
+    public boolean isDuplicateEmail(String email);
+
     public boolean findId(String id);
 
     public boolean updateStudent(String id, Student newData);

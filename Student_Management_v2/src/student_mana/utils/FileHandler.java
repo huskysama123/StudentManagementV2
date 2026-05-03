@@ -50,7 +50,7 @@ public class FileHandler {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] data = line.split("|");
+                String[] data = line.split("\\|");
                 Student s = new Student(data[0], // student id
                         data[1], // student name
                         Integer.parseInt(data[2]), // Student age
