@@ -27,32 +27,37 @@ public class ConsoleUI {
         boolean isKeepUsing = true;
         while (isKeepUsing) {
             printMenu();
-            System.out.print("Please choose (1,2,3,4,5 or 0: ");
-            choice = Integer.parseInt(ip.nextLine().trim());
-            switch (choice) {
-                case 1:
-                    inputInformation();
-                    break;
-                case 2:
+            System.out.print("Please choose (1,2,3,4,5 or 0): ");
+            try {
+                choice = Integer.parseInt(ip.nextLine().trim());
+                switch (choice) {
+                    case 1:
+                        // inputInformation();
+                        enterMoreStudent();
+                        isKeepUsing = true;
+                        break;
+                    case 2:
 
-                    break;
-                case 3:
+                        break;
+                    case 3:
 
-                    break;
-                case 4:
+                        break;
+                    case 4:
 
-                    break;
-                case 5:
+                        break;
+                    case 5:
 
-                    break;
-                case 0:
+                        break;
+                    case 0:
+                        System.out.println("Goodbye!!");
+                        isKeepUsing = false;
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid choice. Please enter an integer!");
+                isKeepUsing = true;
 
-                    break;
-
-                default:
-                    System.out.println("Invalid choice. Please enter an integer!");
             }
-            isKeepUsing = false;
         }
     }
 
@@ -86,6 +91,33 @@ public class ConsoleUI {
         double gpa = inputDouble("Enter your GPA: ");
         Student s = new Student(null, name, age, address, email, gpa);
         service.addStudent(s);
+    }
+
+    // Create loop if admin want to add more student
+    public void enterMoreStudent() {
+        String continousOrder = "^[yYNn]$";
+        String inputOrder;
+        boolean isValidInput;
+        do {
+            inputInformation();
+            isValid = true;
+            do {
+                isValidInput = true;
+                System.out.println("Do you want enter more Student? Y or N: ");
+                inputOrder = ip.nextLine().trim();
+                if (!inputOrder.matches(continousOrder)) {
+                    System.out.println("Only Y or N!");
+                    isValidInput = false;
+                } else {
+                    isValidInput = true; // Continous loop if it is valid
+                    isValid = false;
+                }
+            } while (!isValidInput);
+            // Check if input is N, it will break the loop and return to the menu
+            if (inputOrder.equalsIgnoreCase("N") || inputOrder.equalsIgnoreCase("n")) {
+                isValid = true;
+            }
+        } while (!isValid);
     }
 
     // Check validate input an integer number

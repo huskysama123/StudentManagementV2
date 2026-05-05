@@ -16,6 +16,7 @@ public class StudentService implements IStudentService {
         respository.save(s);
     }
 
+    // Check if email is duplicated
     public boolean isDuplicateEmail(String email) {
         // Check duplicated email
         for (Student student : respository.findAll()) {
@@ -27,21 +28,32 @@ public class StudentService implements IStudentService {
         return false;
     }
 
+    /**
+     * Generates a new Student ID based on the maximum existing ID.
+     * The new ID will have the format "SV" followed by 3 digits (e.g., SV001,
+     * SV012).
+     *
+     * @return The new Student ID as a String.
+     */
     private String generateID() {
         int maxId = 0;
         int newId = 0;
         List<Student> list = respository.findAll();
         for (Student s : list) {
             String id = s.getStudentID();
+            // Check if the ID is valid and starts with the prefix "SV"
             if (id != null && id.startsWith("SV")) {
+                // Extract the numeric part form the ID
                 String numParts = id.substring(2);
                 int num = Integer.parseInt(numParts);
+                // Update the maximum ID found
                 if (num > maxId) {
                     maxId = num;
                 }
             }
         }
         newId = maxId + 1;
+        // Format the number to a 3-digit string, adding leading zeros if necessary
         return "SV" + String.format("%03d", newId);
     }
 
