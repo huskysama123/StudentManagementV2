@@ -76,8 +76,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllStudents'");
+        return respository.findAll();
     }
 
     @Override

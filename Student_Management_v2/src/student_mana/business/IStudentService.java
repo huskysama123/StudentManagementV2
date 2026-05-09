@@ -5,6 +5,7 @@ import java.util.List;
 import student_mana.model.Student;
 
 public interface IStudentService {
+
     public void addStudent(Student s);
 
     public boolean isDuplicateEmail(String email);

@@ -1,6 +1,6 @@
 package student_mana.ui;
 
-import java.io.IO;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 
@@ -37,7 +37,7 @@ public class ConsoleUI {
                         isKeepUsing = true;
                         break;
                     case 2:
-
+                        
                         break;
                     case 3:
 
@@ -47,6 +47,9 @@ public class ConsoleUI {
                         break;
                     case 5:
 
+                        break;
+                    case 6:
+                        displayAllStudents();
                         break;
                     case 0:
                         System.out.println("Goodbye!!");
@@ -61,6 +64,7 @@ public class ConsoleUI {
         }
     }
 
+    // Print the option for the menu
     private void printMenu() {
         System.out.println("===== STUDENT MANGEMENT =====");
         System.out.println("1. Add student");
@@ -68,6 +72,7 @@ public class ConsoleUI {
         System.out.println("3. Find student by id");
         System.out.println("4. Delete student");
         System.out.println("5. Show statictisc");
+        System.out.println("6. Display all Student");
         System.out.println("0. Exit program");
     }
 
@@ -159,7 +164,7 @@ public class ConsoleUI {
         boolean isValid;
         do {
             isValid = true;
-            System.out.println(prompt);
+            System.out.print(prompt);
             input = ip.nextLine().concat(input);
             if (!validator.apply(input)) {
                 System.out.println(errorMsg);
@@ -187,5 +192,31 @@ public class ConsoleUI {
             }
         } while (!isValid);
         return num;
+    }
+
+    public void displayAllStudents() {
+        List<Student> listData = service.getAllStudents();
+        if (listData.isEmpty()) {
+            System.out.println("No students found");
+            return;
+        }
+        // Header
+        System.out.println("=".repeat(80));
+        System.out.printf("| %-10s | %-20s | %-10s | %-25s | %.0f |\n",
+                "ID", "Name", "Age", "Email");
+        System.out.println("=".repeat(80));
+
+        // Data rows
+        for (Student s : listData) {
+            System.out.printf("| %-10s | %-20s | %-10d | %-25s | %.0f |\n",
+                    s.getStudentID(),
+                    s.getName(),
+                    s.getAge(),
+                    s.getEmail(),
+                    s.getGpa());
+        }
+
+        // Footer
+        System.out.println("=".repeat(80));
     }
 }
